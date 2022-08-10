@@ -14,7 +14,9 @@
       background-color: rgb(248, 249, 250);
     }
   </style>
-  
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="234182601925-p0np49m5bmjgt3fhnrsrf2rcs63c5sdc.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -48,8 +50,8 @@
         <!-- Register buttons -->
         <div class="text-center">
           <p>No es Usuario? <a href="#!">Registro</a></p>
-          <p>o ingresar con:</p>
-          <button type="button" class="btn btn-link btn-floating mx-1" >
+          <p>o ingresar con Google:</p>
+          <button type="button" class="btn btn-link btn-floating mx-1 g-signin2" data-onsuccess="onSignIn">
             <img src="./img/logo_google.png" height ="40" width="40">
           </button>
         </div>
@@ -67,6 +69,7 @@
     </div>
   </footer>
   <script src="js/login.js"></script>
+
 </body>
 
 </html>
