@@ -10,12 +10,13 @@ valido = document.getElementById('emailOK');
   alert('Usuario y/o Contraseña Incorecto o Vacio!');
   window.location.reload()
  }if (formatoemail.test(email)) {
-    location.href = "../index.html";
+    location.href = "../main.html";
  }else {
    valido.innerText = "Formato de email Incorrecto";
  }
 }
 
+//Boton para login de Google
 function onSignIn(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
