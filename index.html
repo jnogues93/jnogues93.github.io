@@ -5,76 +5,60 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
+  
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(248, 249, 250);
+    }
+  </style>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="234182601925-p0np49m5bmjgt3fhnrsrf2rcs63c5sdc.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <main>
-    <div class="jumbotron text-center"></div>
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
-              <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
-                alt="Imgagen representativa de la categoría 'Autos'">
-              <h3 class="m-3">Autos</h3>
-              <div class="card-body">
-                <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
-              <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
-                alt="Imgagen representativa de la categoría 'Juguetes'">
-              <h3 class="m-3">Juguetes</h3>
-              <div class="card-body">
-                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
-              <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
-                alt="Imgagen representativa de la categoría 'Muebles'">
-              <h3 class="m-3">Muebles</h3>
-              <div class="card-body">
-                <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
-              </div>
-            </div>
-          </div>
+  <div class="form-outline mb-4">
+    <img src="./img/login.png" alt="" srcset="" class="mx-auto d-block">
+  </div>
+  <main class="mt-5">
+    <div class="container text-center col-2">
+      <form id="login">
+        <div class="form-outline mb-4">
+          <h4>Inicio de Sesion</h4>
         </div>
-        <div class="row">
-          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" /><span id="emailOK"></span>
         </div>
-      </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
+        </div>
+      
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+        </div>
+      
+        <!-- Submit button -->
+        <button type="button" id="button_login" class="btn btn-primary btn-block mb-4" href="./index.html">Login</button>
+      
+        <!-- Registro y Google Login -->
+        <div class="text-center">
+          <p>No es Usuario? <a href="#!">Registro</a></p>
+          <p>o ingresar con Google:</p>
+          <div class="g-signin2 btn btn-link btn-floating mx-1 g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+          
+          <!--<button type="button" class="btn btn-link btn-floating mx-1 g-signin2" data-onsuccess="onSignIn">
+            <img src="./img/logo_google.png" height ="40" width="40">
+          </button> -->
+          
+        </div>
+      </form>
     </div>
   </main>
   <footer class="text-muted">
@@ -87,9 +71,8 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/index.js"></script>
-  <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
+
 </body>
 
 </html>
