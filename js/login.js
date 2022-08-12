@@ -10,11 +10,12 @@ validopasswd = document.getElementById('passwOK');
  if( email == "" || passwd == "" ) {
   alert('Usuario y/o Contraseña No pueden estar Vacio!');
   //window.location.reload()
- }if (formatoemail.test(email) || passwd.length < 8) {
+ }if (!formatoemail.test(email) ) {
   validoemail.innerText = "Formato de email Incorrecto";
-  validopasswd.innerText = "Formato Contraseña Invalido";
+ }if (passwd.length >= 8) {
+  location.href = "../main.html";
  }else {
-   location.href = "../main.html";
+  validopasswd.innerText = "Formato Contraseña Invalido";
  }
 }
 
