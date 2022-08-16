@@ -9,7 +9,6 @@ validopasswd = document.getElementById('passwOK');
 
  if( email == "" || passwd == "" ) {
   alert('Usuario y/o Contraseña No pueden estar Vacio!');
-  //window.location.reload()
  }else if (!formatoemail.test(email) ) {
   validoemail.innerText = "Formato de email Incorrecto";
  }else if (passwd.length < 8) {
@@ -22,7 +21,6 @@ validopasswd = document.getElementById('passwOK');
 //Boton para login de Google
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
   console.log('Full Name: ' + profile.getName());
   console.log('Given Name: ' + profile.getGivenName());
   console.log('Family Name: ' + profile.getFamilyName());
