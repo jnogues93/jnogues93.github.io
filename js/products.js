@@ -1,8 +1,8 @@
 let lista = [];
+let id = localStorage.getItem("catID");
 
 document.addEventListener("DOMContentLoaded", function(e){
-    const URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
-    JSONData(URL).then(function(JSON){
+    getJSONData(`${PRODUCTS_URL}${id}.json`).then(function(JSON){
         if (JSON.status === "ok")
         {
             lista = JSON.data;
@@ -16,6 +16,7 @@ function showProducts(array){
     let verarticulos = "";
     let registro = array.products
 
+    if(id == "101") {
     for(let i = 0; i < registro.length; i++){ 
         let autos = registro[i];
         verarticulos += `
@@ -33,5 +34,6 @@ function showProducts(array){
                 </div>
         `
         document.getElementById("cat-list-container").innerHTML = verarticulos;
+    }
     }
 }
