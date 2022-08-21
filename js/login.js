@@ -16,7 +16,9 @@ validopasswd = document.getElementById('passwOK');
  }else if (passwd.length < 8) {
   validopasswd.innerText = "Formato Contraseña Invalido - Largo minimo 8 caracteres";
  }else {
-  location.href = "../main.html";
+  localStorage.setItem("userlocal", email);
+  window.location = "main.html"
+  location.href = "main.html";
  }
 }
 //#########################################################//
@@ -27,6 +29,12 @@ validopasswd = document.getElementById('passwOK');
 
 function handleCredentialResponse(response) {
   const responsePayload = decodeJwtResponse(response.credential);
+  localStorage.setItem("getImg", responsePayload.picture);
+  window.location = "main.html"
+  localStorage.setItem("getName", responsePayload.name);
+  window.location = "main.html"
+  localStorage.setItem("getEmail", responsePayload.email);
+  window.location = "main.html"
   location.href = "main.html"
   
   //#########################################################//
