@@ -17,7 +17,6 @@ validopasswd = document.getElementById('passwOK');
   validopasswd.innerText = "Formato Contraseña Invalido - Largo minimo 8 caracteres";
  }else {
   localStorage.setItem("userlocal", email);
-  window.location = "main.html"
   location.href = "main.html";
  }
 }
@@ -30,11 +29,8 @@ validopasswd = document.getElementById('passwOK');
 function handleCredentialResponse(response) {
   const responsePayload = decodeJwtResponse(response.credential);
   localStorage.setItem("getImg", responsePayload.picture);
-  window.location = "main.html"
   localStorage.setItem("getName", responsePayload.name);
-  window.location = "main.html"
   localStorage.setItem("getEmail", responsePayload.email);
-  window.location = "main.html"
   location.href = "main.html"
   
   //#########################################################//
@@ -83,8 +79,8 @@ function decodeJwtResponse(token) {
 
 //#########################################################//
 //Funcion para cerrar sesion, la requiere el boton de login
-function signOut() {
-  google.accounts.id.disableAutoSelect();
-  location.reload();
-//#########################################################//  
-}
+//function signOut() {
+//  google.accounts.id.disableAutoSelect();
+//  location.reload();  
+//}
+//#########################################################//

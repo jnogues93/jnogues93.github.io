@@ -39,3 +39,47 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+//#########################################################//
+// Funciones para agregar campos de Profile/Login
+
+let newidul = document.querySelector(".navbar-nav");
+newidul.setAttribute('id','menu');
+
+LocalEmail = localStorage.getItem("userlocal");
+//imggoogle.src = localStorage.getItem("getImg");
+NameGoogle = localStorage.getItem("getName");
+GoogleEmail = localStorage.getItem("getEmail");
+
+if(LocalEmail) {
+let profilelocal = `
+          <li class="nav-item" id="login">
+            <div class="emaillocal text-light">${LocalEmail}</div>
+            <div class="text-light"><button onClick="signOut()">Sign Out</button></div>
+          </li>
+        `
+        document.getElementById("menu").innerHTML += profilelocal
+}else if(GoogleEmail) {
+let profilegoogle = `
+          <li class="nav-item" id="login">
+            <div class="name text-light">${NameGoogle}</div>
+            <div class="email text-light">${GoogleEmail}</div>
+            <div class="text-light"><button onClick="signOut()">Sign Out</button></div>
+          </li>
+       `
+       document.getElementById("menu").innerHTML += profilegoogle
+}
+
+//#########################################################//
+
+//#########################################################//
+//Funcion para cerrar sesion, la requiere el boton de login
+let login =  document.getElementById("login");
+function signOut() {
+    localStorage.removeItem('userlocal');
+    localStorage.removeItem('getName');
+    localStorage.removeItem('getEmail');
+    location.href = "index.html";
+    //location.reload();
+}
+//#########################################################//
