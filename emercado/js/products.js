@@ -1,6 +1,6 @@
-const ASC_BY_NAME = "AZ";
-const DESC_BY_NAME = "ZA";
-const ORDER_PROD_COUNT = "Cant.";
+const ASC_BY_NAME = "Ascendente";
+const DESC_BY_NAME = "Descendente";
+const ORDER_PROD_COUNT = "Cantidad";
 let CriteriaSort = undefined;
 let min = undefined;
 let max = undefined;
@@ -79,6 +79,55 @@ function sortAndShowProducts(sortCriteria, productsArray){
     showProducts();
 }
 
+function findProducts () {
+    //Obtengo en tiempo real la busqueda
+    let verarticulos = '';
+    const buscar = document.getElementById('rangeFilterSearch');
+        
+    const texto = buscar.value.toLowerCase();
+    for(let producto of lista.products){
+        let nombre = producto.name.toLowerCase();
+        let descripcion = producto.description.toLowerCase();
+        if(nombre.indexOf(texto) !== -1){
+           verarticulos += `
+                <div class="row">
+                            <div class="col-3">
+                                <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
+                            </div>
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">${producto.name} - ${producto.currency} ${producto.cost}</h4>
+                                    <small class="text-muted">${producto.soldCount} artículos</small>
+                                </div>
+                                <p class="mb-1">${producto.description}</p>
+                            </div>
+                        </div>
+                `
+            document.getElementById("cat-list-container").innerHTML = verarticulos;
+
+        } else if(descripcion.indexOf(texto) !== -1){
+                  verarticulos += `
+                    <div class="row">
+                                <div class="col-3">
+                                    <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1">${producto.name} - ${producto.currency} ${producto.cost}</h4>
+                                        <small class="text-muted">${producto.soldCount} artículos</small>
+                                    </div>
+                                    <p class="mb-1">${producto.description}</p>
+                                </div>
+                            </div>
+                    `
+            document.getElementById("cat-list-container").innerHTML = verarticulos;
+    
+        } else if(verarticulos === ''){
+                    verarticulos += '<p> Producto no encontrado </p>';
+                    document.getElementById("cat-list-container").innerHTML = verarticulos;
+            }
+        }
+    }
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(`${PRODUCTS_URL}${id}${EXT_TYPE}`).then(function(JSON){
@@ -134,4 +183,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProducts();
     });
+
+    document.getElementById("rangeFilterSearch").addEventListener("keyup", findProducts)
 });

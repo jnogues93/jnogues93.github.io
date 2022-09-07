@@ -68,18 +68,21 @@ let profilegoogle = `
           </li>
        `
        document.getElementById("menu").innerHTML += profilegoogle
+} else {
+  let limpiar = `     
+                  <input type="button" onclick="location.href='./index.html';" value="Sign In" />
+  `
+  document.getElementById("menu").innerHTML += limpiar
 }
 
 //#########################################################//
 
 //#########################################################//
 //Funcion para cerrar sesion, la requiere el boton de login
-let login =  document.getElementById("login");
 function signOut() {
     localStorage.removeItem('userlocal');
     localStorage.removeItem('getName');
     localStorage.removeItem('getEmail');
-    location.href = "index.html";
-    //location.reload();
+    location.reload();
 }
 //#########################################################//
