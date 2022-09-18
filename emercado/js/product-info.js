@@ -111,7 +111,7 @@ function showArticles(){
         }
 
         //Control para mostrar los comentarios
-        document.getElementById("comentarios").innerHTML += `<h5 class="font-weight-bold"><strong>Comentarios</strong></h5>`;
+        document.getElementById("comentarios").innerHTML += `<hr/><h5 class="mb-3 font-weight-bold"><strong>Comentarios</strong></h5>`;
         for(let c of comentario){
             let estrella = `<span class="fa fa-star checked"></span>`.repeat(c.score);
             vercomentarios = `
