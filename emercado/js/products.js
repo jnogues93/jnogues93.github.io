@@ -36,6 +36,14 @@ function sortProducts(criteria, array){
     return result;
 }
 
+<<<<<<< HEAD
+=======
+function setArticuloID(id) {
+    localStorage.setItem("artID", id);
+    window.location = "product-info.html"
+}
+
+>>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
 let verhtml = function(producto){
     let verarticulos = `
     <div class="row">
