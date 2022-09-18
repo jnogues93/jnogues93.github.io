@@ -2,10 +2,7 @@ let item = [];
 let imagen = [];
 let comentario = [];
 let id_articulo = localStorage.getItem("artID");
-<<<<<<< HEAD
 let btnComentario = document.getElementById('btnComentario');
-=======
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
 
 
 function verificar(url){
@@ -14,10 +11,7 @@ function verificar(url){
         if (JSON.status === "ok"){
             item = JSON.data;
             imagen = JSON.data.images;
-<<<<<<< HEAD
             relacionado = JSON.data.relatedProducts;
-=======
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
             showArticles();
         }
     });
@@ -32,7 +26,6 @@ function verificar(url){
 
 }
 
-<<<<<<< HEAD
 function newComentario(){
     let valorScore = document.getElementById("score");
     let valorComment = document.getElementById("com");
@@ -64,17 +57,12 @@ btnComentario.addEventListener('click', (evento) => {
         newComentario();
         }
 });
-=======
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
 
 function showArticles(){
     let verarticulos = "";
     let verarticulosimg = "";
     let vercomentarios = "";
-<<<<<<< HEAD
     let verarticulorelacionado = "";
-=======
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
     if(id_articulo) {
         verarticulos = `
         <div class="col">
@@ -104,11 +92,7 @@ function showArticles(){
                     <div class="row" id="imagenes">
                     </div>
                 </div>
-<<<<<<< HEAD
                     <div class="mt-3" id="comentarios">
-=======
-                    <div class="mt-3" id="comentario">
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
                     </div>
         `
         document.getElementById("cat-list-container").innerHTML = verarticulos;
@@ -122,11 +106,7 @@ function showArticles(){
         document.getElementById("imagenes").innerHTML = verarticulosimg;
         }
 
-<<<<<<< HEAD
         document.getElementById("comentarios").innerHTML += `<h5 class="font-weight-bold"><strong>Comentarios</strong></h5>`;
-=======
-        document.getElementById("comentario").innerHTML += `<h5 class="font-weight-bold"><strong>Comentarios</strong></h5>`;
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
         for(let c of comentario){
             let estrella = `<span class="fa fa-star checked"></span>`.repeat(c.score);
             vercomentarios = `
@@ -135,7 +115,6 @@ function showArticles(){
                         <p>${c.description}</p>
                     </div>
         `
-<<<<<<< HEAD
         document.getElementById("comentarios").innerHTML += vercomentarios;
         }
 
@@ -149,10 +128,6 @@ function showArticles(){
         `
         document.getElementById("producto-relacionado").innerHTML = verarticulorelacionado;
         }
-=======
-        document.getElementById("comentario").innerHTML += vercomentarios;
-        }    
->>>>>>> 5ee3c83f5ae44f02ff5ba4d20bccc10ea0554738
     }
 }
 
