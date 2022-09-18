@@ -5,8 +5,7 @@ let CriteriaSort = undefined;
 let min = undefined;
 let max = undefined;
 let lista = [];
-let registro = [];
-let id = localStorage.getItem("catID");
+let id_categoria = localStorage.getItem("catID");
 
 function sortProducts(criteria, array){
     let result = [];
@@ -37,29 +36,33 @@ function sortProducts(criteria, array){
     return result;
 }
 
+let verhtml = function(producto){
+    let verarticulos = `
+    <div class="row">
+                <div class="col-3">
+                    <input type="image"src="${producto.image}" alt="${producto.description}" onclick="setArticuloID(${producto.id})" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">${producto.name} - ${producto.currency} ${producto.cost}</h4>
+                        <small class="text-muted">${producto.soldCount} artículos</small>
+                    </div>
+                    <p class="mb-1">${producto.description}</p>
+                </div>
+            </div>
+    `;
+    return verarticulos;
+}
+
 function showProducts(){
     let verarticulos = "";
-    if(id) {
-    for(let i = 0; i < registro.length; i++){ 
-        let articulo = registro[i];
+    if(id_categoria) {
+    for(let producto of lista){ 
 
-        if (((min == undefined) || (min != undefined && parseInt(articulo.soldCount) >= min)) &&
-        ((max == undefined) || (max != undefined && parseInt(articulo.soldCount) <= max))){
+        if (((min == undefined) || (min != undefined && parseInt(producto.soldCount) >= min)) &&
+        ((max == undefined) || (max != undefined && parseInt(producto.soldCount) <= max))){
 
-        verarticulos += `
-        <div class="row">
-                    <div class="col-3">
-                        <img src="${articulo.image}" alt="${articulo.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${articulo.name} - ${articulo.currency} ${articulo.cost}</h4>
-                            <small class="text-muted">${articulo.soldCount} artículos</small>
-                        </div>
-                        <p class="mb-1">${articulo.description}</p>
-                    </div>
-                </div>
-        `
+        verarticulos += verhtml(producto);
         document.getElementById("cat-list-container").innerHTML = verarticulos;
     }
     }
@@ -70,10 +73,10 @@ function sortAndShowProducts(sortCriteria, productsArray){
     CriteriaSort = sortCriteria;
 
     if(productsArray != undefined){
-        registro = productsArray;
+        lista = productsArray;
     }
 
-    registro = sortProducts(CriteriaSort, registro);
+    lista = sortProducts(CriteriaSort, lista);
 
     //Muestro los articulos ordenados
     showProducts();
@@ -85,56 +88,26 @@ function findProducts () {
     const buscar = document.getElementById('rangeFilterSearch');
         
     const texto = buscar.value.toLowerCase();
-    for(let producto of lista.products){
+    for(let producto of lista){
         let nombre = producto.name.toLowerCase();
         let descripcion = producto.description.toLowerCase();
         if(nombre.indexOf(texto) !== -1){
-           verarticulos += `
-                <div class="row">
-                            <div class="col-3">
-                                <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
-                            </div>
-                            <div class="col">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1">${producto.name} - ${producto.currency} ${producto.cost}</h4>
-                                    <small class="text-muted">${producto.soldCount} artículos</small>
-                                </div>
-                                <p class="mb-1">${producto.description}</p>
-                            </div>
-                        </div>
-                `
+            verarticulos += verhtml(producto);
             document.getElementById("cat-list-container").innerHTML = verarticulos;
-
         } else if(descripcion.indexOf(texto) !== -1){
-                  verarticulos += `
-                    <div class="row">
-                                <div class="col-3">
-                                    <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h4 class="mb-1">${producto.name} - ${producto.currency} ${producto.cost}</h4>
-                                        <small class="text-muted">${producto.soldCount} artículos</small>
-                                    </div>
-                                    <p class="mb-1">${producto.description}</p>
-                                </div>
-                            </div>
-                    `
+            verarticulos += verhtml(producto);
             document.getElementById("cat-list-container").innerHTML = verarticulos;
-    
         } else if(verarticulos === ''){
-                    verarticulos += '<p> Producto no encontrado </p>';
-                    document.getElementById("cat-list-container").innerHTML = verarticulos;
-            }
+            document.getElementById("cat-list-container").innerHTML = '<p> Producto no encontrado </p>';
         }
     }
+}
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(`${PRODUCTS_URL}${id}${EXT_TYPE}`).then(function(JSON){
+    getJSONData(`${PRODUCTS_URL}${id_categoria}${EXT_TYPE}`).then(function(JSON){
         if (JSON.status === "ok")
         {
-            lista = JSON.data;
-            registro = lista.products;
+            lista = JSON.data.products;
             showProducts();
         }
     });

@@ -40,6 +40,11 @@ let getJSONData = function(url){
     });
 }
 
+function setArticuloID(id) {
+  localStorage.setItem("artID", id);
+  window.location = "product-info.html"
+}
+
 //#########################################################//
 // Funciones para agregar campos de Profile/Login
 
