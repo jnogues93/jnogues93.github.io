@@ -4,7 +4,7 @@ let comentario = [];
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
 
-
+//Funcion para verificar que url se consulta
 function verificar(url){
     if(url == PRODUCT_INFO_URL){
     getJSONData(`${url}${id_articulo}${EXT_TYPE}`).then(function(JSON){
@@ -26,6 +26,7 @@ function verificar(url){
 
 }
 
+//Funcion que agrega el comentario nuevo
 function newComentario(){
     let valorScore = document.getElementById("score");
     let valorComment = document.getElementById("com");
@@ -43,6 +44,7 @@ function newComentario(){
     showArticles();
 }
 
+//Funcion para el evento del boton de agregar comentario
 btnComentario.addEventListener('click', (evento) => {
     evento.preventDefault();
     user = "";
@@ -58,6 +60,7 @@ btnComentario.addEventListener('click', (evento) => {
         }
 });
 
+//Funcion para mostrar el articulo seleccionado
 function showArticles(){
     let verarticulos = "";
     let verarticulosimg = "";
@@ -97,6 +100,7 @@ function showArticles(){
         `
         document.getElementById("cat-list-container").innerHTML = verarticulos;
 
+        //Control para mostrar las imagenes del producto seleccionado
         for(let i of imagen){ 
             verarticulosimg += `
                 <div class="col">
@@ -106,6 +110,7 @@ function showArticles(){
         document.getElementById("imagenes").innerHTML = verarticulosimg;
         }
 
+        //Control para mostrar los comentarios
         document.getElementById("comentarios").innerHTML += `<h5 class="font-weight-bold"><strong>Comentarios</strong></h5>`;
         for(let c of comentario){
             let estrella = `<span class="fa fa-star checked"></span>`.repeat(c.score);
@@ -118,6 +123,7 @@ function showArticles(){
         document.getElementById("comentarios").innerHTML += vercomentarios;
         }
 
+        //Control para mostrar los produtos relacionados
         for(let r of relacionado){ 
             verarticulorelacionado += `
                 <div class="col-3">
@@ -131,7 +137,7 @@ function showArticles(){
     }
 }
 
-
+//Eventos que se cargan al ingresar a la pagina
 document.addEventListener("DOMContentLoaded", function(e){
     verificar(PRODUCT_INFO_URL);
     verificar(PRODUCT_INFO_COMMENTS_URL);
