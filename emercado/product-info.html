@@ -7,6 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/Bootstrap-5.2.1-css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -30,8 +31,6 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
         </ul>
       </div>
     </div>
@@ -39,7 +38,31 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="list-group" id="cat-list-container">
+        <div class=" row list-group" id="cat-list-container">
+          <div class="col" id="articulo">
+          </div>
+          <div class="col">
+            <h5><strong>Imagenes ilustrativas</strong></h5>
+                <div class="row" id="imagenes">
+                      <div id="carouselArticulo" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-indicators" id="carrusel1">
+                        </div>
+                        <div class="carousel-inner" id="carrusel2">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselArticulo" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselArticulo" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+          </div>
+          <div class="mt-3" id="comentarios">
+            <hr/><h5 class="mb-3 font-weight-bold"><strong>Comentarios</strong></h5>
+          </div>
         </div>
         <div class="row mt-3">
         <div id="comentario" class="col-5 list-group">
@@ -63,7 +86,6 @@
             <a href="" class="close" data-dismiss="alert" aria-label="close">×</a>
             <strong>Error!</strong> Debe estar logueado para comentar.
           </div>
-        
         </div>
       </div>
       </div>
@@ -71,8 +93,6 @@
 
     <div class="container">
       <div class="row">
-        <div class="list-group">
-        </div>
         <div class="col list-group">
           <div class="col mt-3">
               <hr/>
@@ -102,6 +122,7 @@
       <div></div>
     </div>
   </div>
+  <script src="js/Bootstrap-5.2.1-js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>

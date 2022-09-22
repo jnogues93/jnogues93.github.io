@@ -58,18 +58,30 @@ GoogleEmail = localStorage.getItem("getEmail");
 
 if(LocalEmail) {
 let profilelocal = `
-          <li class="nav-item" id="login">
-            <div class="emaillocal text-light">${LocalEmail}</div>
-            <div class="text-light"><button onClick="signOut()">Sign Out</button></div>
+          <li class="nav-item dropdown" id="login">
+            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ${LocalEmail}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="./cart.html">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+              <li><a class="dropdown-item" onClick="signOut()">Cerrar sesion</a></li>
+            </ul>
           </li>
         `
         document.getElementById("menu").innerHTML += profilelocal
 }else if(GoogleEmail) {
 let profilegoogle = `
-          <li class="nav-item" id="login">
-            <div class="name text-light">${NameGoogle}</div>
-            <div class="email text-light">${GoogleEmail}</div>
-            <div class="text-light"><button onClick="signOut()">Sign Out</button></div>
+          <li class="nav-item dropdown" id="login">
+            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ${NameGoogle}
+            ${GoogleEmail}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="./cart.html">Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                <li><a class="dropdown-item" onClick="signOut()">Cerrar sesion</a></li>
+            </ul>
           </li>
        `
        document.getElementById("menu").innerHTML += profilegoogle

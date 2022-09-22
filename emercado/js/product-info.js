@@ -1,6 +1,7 @@
 let item = [];
 let imagen = [];
 let comentario = [];
+let relacionado = [];
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
 
@@ -62,13 +63,14 @@ btnComentario.addEventListener('click', (evento) => {
 
 //Funcion para mostrar el articulo seleccionado
 function showArticles(){
-    let verarticulos = "";
-    let verarticulosimg = "";
+    let primerimg1 = "";
+    let primerimg2 = "";
+    let verarticulosimg1 = "";
+    let verarticulosimg2 = "";
     let vercomentarios = "";
     let verarticulorelacionado = "";
     if(id_articulo) {
         verarticulos = `
-        <div class="col">
                     <div class="col mt-3">
                         <h3 class="mb-1">${item.name}</h3>
                         <hr />
@@ -88,39 +90,50 @@ function showArticles(){
                     <div class="col">
                         <h5 class="font-weight-bold"><strong>Cantidad de Vendidos</strong></h5>
                         <p class="mb-1">${item.soldCount}</p>
-                    </div>
-                    <div class="col-3">
-                        <h5><strong>Imagenes ilustrativas</strong></h5>
-                    </div>
-                    <div class="row" id="imagenes">
-                    </div>
-                </div>
-                    <div class="mt-3" id="comentarios">
-                    </div>
+                    </div>           
         `
-        document.getElementById("cat-list-container").innerHTML = verarticulos;
+        document.getElementById("articulo").innerHTML = verarticulos;
 
         //Control para mostrar las imagenes del producto seleccionado
-        for(let i of imagen){ 
-            verarticulosimg += `
-                <div class="col">
-                        <img src="${i}" class="img-thumbnail">
-                </div>
+        
+        //## Control para mostrar la primer imagen del Arreglo en el Carrusel
+        primerimg1 = `
+                    <button type="button" data-bs-target="#carouselArticulo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Articulo 1"></button>
         `
-        document.getElementById("imagenes").innerHTML = verarticulosimg;
+        document.getElementById("carrusel1").innerHTML = primerimg1;
+
+        primerimg2 = `
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="${imagen[0]}" alt="0">
+                    </div>
+        `
+        document.getElementById("carrusel2").innerHTML = primerimg2;
+
+        //## Control para mostrar el resto de imagenes del Arreglo en el Carrusel
+        for(let i = 1; i < imagen.length; i++){
+        verarticulosimg1 = `
+            <button type="button" data-bs-target="#carouselArticulo" data-bs-slide-to="${i}" aria-label="Articulo ${i}"></button>
+        `
+        document.getElementById("carrusel1").innerHTML += verarticulosimg1;
+
+        verarticulosimg2 = `
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="${imagen[i]}" alt="${i}">
+                    </div>
+        `
+        document.getElementById("carrusel2").innerHTML += verarticulosimg2;
         }
 
         //Control para mostrar los comentarios
-        document.getElementById("comentarios").innerHTML += `<hr/><h5 class="mb-3 font-weight-bold"><strong>Comentarios</strong></h5>`;
         for(let c of comentario){
             let estrella = `<span class="fa fa-star checked"></span>`.repeat(c.score);
-            vercomentarios = `
+            vercomentarios += `
                     <div class="border rounded container-fluid">
                         <p><strong>${c.user}</strong> - ${c.dateTime} - ${estrella}</p>
                         <p>${c.description}</p>
                     </div>
         `
-        document.getElementById("comentarios").innerHTML += vercomentarios;
+        document.getElementById("comentarios").innerHTML = vercomentarios;
         }
 
         //Control para mostrar los produtos relacionados
