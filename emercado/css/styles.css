@@ -202,3 +202,8 @@ a.custom-card:hover {
   border-radius: 50%;
   border: 1px solid black;
 }
+
+
+#modal {
+  background-color: rgba(0,0,0, 0.95) !important;
+}

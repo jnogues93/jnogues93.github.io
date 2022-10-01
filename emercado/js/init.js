@@ -45,6 +45,32 @@ function setArticuloID(id) {
   window.location = "product-info.html"
 }
 
+function verModal(){
+  $(document).ready(function(){
+    $("#modal").modal({ backdrop: 'static', keyboard: false });
+    $("#modal").modal('show');
+  });
+}
+
+//## Agregar Modal ##
+let showmodal = `
+<div class="modal" id="modal" tabindex="-1">
+<div class="modal-dialog">
+  <div class="modal-content modalblur">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+      <p>Para ver el contenido debe Iniciar Sesion</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" onclick="location.href='./index.html';" class="btn btn-primary">Iniciar Sesion</button>
+    </div>
+  </div>
+</div>
+</div>
+`
+document.getElementById("addModal").innerHTML += showmodal
+
 //#########################################################//
 // Funciones para agregar campos de Profile/Login
 
@@ -52,7 +78,7 @@ let newidul = document.querySelector(".navbar-nav");
 newidul.setAttribute('id','menu');
 
 LocalEmail = localStorage.getItem("userlocal");
-//imggoogle.src = localStorage.getItem("getImg");
+GoogleImg = localStorage.getItem("getImg");
 NameGoogle = localStorage.getItem("getName");
 GoogleEmail = localStorage.getItem("getEmail");
 
@@ -62,7 +88,7 @@ let profilelocal = `
             <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             ${LocalEmail}
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="./cart.html">Mi Carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
               <li><a class="dropdown-item" onClick="signOut()">Cerrar sesion</a></li>
@@ -74,10 +100,9 @@ let profilelocal = `
 let profilegoogle = `
           <li class="nav-item dropdown" id="login">
             <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            ${NameGoogle}
             ${GoogleEmail}
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="./cart.html">Mi Carrito</a></li>
                 <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
                 <li><a class="dropdown-item" onClick="signOut()">Cerrar sesion</a></li>
@@ -85,11 +110,8 @@ let profilegoogle = `
           </li>
        `
        document.getElementById("menu").innerHTML += profilegoogle
-} else {
-  let limpiar = `     
-                  <input type="button" onclick="location.href='./index.html';" value="Sign In" />
-  `
-  document.getElementById("menu").innerHTML += limpiar
+}else {
+  verModal();
 }
 
 //#########################################################//
