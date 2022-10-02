@@ -58,7 +58,7 @@ function verModal(){
       <div class="modal-header">
       </div>
       <div class="modal-body">
-        <p class="text-dark">Debe ingresar el nombre de Pelicula</p>
+        <p class="text-dark">Debe ingresar el nombre de una Pelicula</p>
       </div>
       <div class="modal-footer">
         <button onclick="cerrarModal()" type="button" class="btn btn-primary">Cerrar</button>
