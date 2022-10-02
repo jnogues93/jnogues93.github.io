@@ -140,8 +140,7 @@ function showArticles(){
         for(let r of relacionado){ 
             verarticulorelacionado += `
                 <div class="col-3">
-                    <h5 class="font-weight-bold"><strong>Modelo</strong></h5>
-                    <p class="mb-1">${r.name}</p>
+                    <h5 class="font-weight-bold"><strong>${r.name}</strong></h5>
                     <input type="image"src="${r.image}" onclick="setArticuloID(${r.id})" class="img-thumbnail">
                 </div>
         `
