@@ -89,7 +89,7 @@ function verinfopelicula(){
         </div>
         <hr/>
         <div class="offcanvas-body d-flex justify-content-between overflow-visible">
-          <p class="text-secondary">Generos: ${genre}</p>
+          <p class="text-secondary">Genres: ${genre}</p>
           <div class="btn-group col-md-2">
           <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             More
