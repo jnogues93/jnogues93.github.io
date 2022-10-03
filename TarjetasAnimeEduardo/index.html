@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./spinner.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container mt-3 mt-md-5">
+            <div>
+                <h1>Anime Quote Generator (<span id="pos">0</span>/<span id="total">0</span>)</h1>
+                <div class="mt-4">
+                    <div id="quote" class="content mt-3">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <blockquote class="blockquote mb-0">
+                                        <p class="mb-0 txt">...</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="blockquote mb-0 mt-0">
+                                    <span class="author"></span> -
+                                    <cite class="from"></cite>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex mt-1">
+                    <button id="btn_quote_before" disabled
+                        class="btn_quote btn btn-primary d-flex align-items-center px-4 py-2 justify-content-center mt-4">
+                        <span class="txt font-weight-bold text-uppercase">Previous</span>
+                    </button>
+                    <button id="btn_quote"
+                        class="btn_quote btn btn-primary d-flex align-items-center px-4 py-2 justify-content-center mt-4">
+                        <span class="txt font-weight-bold text-uppercase">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

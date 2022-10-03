@@ -1,0 +1,31 @@
+.btn_quote {
+    width:220px;
+}
+
+#btn_quote_before {
+    margin-right:12px;
+}
+
+.txt {
+    font-size:20px;
+}
+
+.font-weight-bold {
+    font-weight:bold;
+}
+
+.card-text {
+    height:150px;
+    overflow:auto;
+}
+
+.card-footer {
+    min-height:77px;
+}
+
+@media(max-width:768px) {
+    .card-text {
+        height:60vh;
+        overflow:auto;
+    }
+}

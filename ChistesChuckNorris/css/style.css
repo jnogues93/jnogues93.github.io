@@ -1,0 +1,12 @@
+main {
+    min-height: calc(100vh - 160px);
+  }
+
+.nasaimg {
+  height: 8cm;
+  object-fit: cover;
+}
+
+.card-text {
+  max-height: 120px;
+}
