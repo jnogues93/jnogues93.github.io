@@ -203,7 +203,17 @@ a.custom-card:hover {
   border: 1px solid black;
 }
 
-
 #modal {
   background-color: rgba(0,0,0, 0.95) !important;
 }
+
+td img {
+  width: 130px;
+  height: 80px;
+}
+
+.cantidad {
+    left:0;
+    right:0;
+    width:50% !important;
+  }

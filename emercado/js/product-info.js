@@ -2,8 +2,10 @@ let item = [];
 let imagen = [];
 let comentario = [];
 let relacionado = [];
+let comprar = [];
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
+let btnComprar = document.getElementById('btnComprar');
 
 //Funcion para verificar que url se consulta
 function verificar(url){
@@ -24,7 +26,20 @@ function verificar(url){
             }
         });
     }
+}
 
+function addCarrito() {
+    articulocomprar = {
+        count: 1,
+        currency: item.currency,
+        id: item.id,
+        image: imagen[0],
+        name: item.name,
+        unitCost: item.cost
+        };
+        //comprar.push(articulocomprar);
+        localStorage.setItem("ArtComprado", JSON.stringify(articulocomprar));
+        window.location = "cart.html"
 }
 
 //Funcion que agrega el comentario nuevo
@@ -71,10 +86,8 @@ function showArticles(){
     let verarticulorelacionado = "";
     if(id_articulo) {
         verarticulos = `
-                    <div class="col mt-3">
-                        <h3 class="mb-1">${item.name}</h3>
-                        <hr />
-                    </div>
+                    <h3 class="mb-1">${item.name}</h3>
+                    <hr />
                     <div class="col">
                         <h5 class="font-weight-bold"><strong>Precio</strong></h5>
                         <p class="mb-1">${item.currency} ${item.cost}</p>
@@ -93,6 +106,7 @@ function showArticles(){
                     </div>           
         `
         document.getElementById("articulo").innerHTML = verarticulos;
+        
 
         //Control para mostrar las imagenes del producto seleccionado
         
@@ -149,8 +163,14 @@ function showArticles(){
     }
 }
 
+
+
 //Eventos que se cargan al ingresar a la pagina
 document.addEventListener("DOMContentLoaded", function(e){
+    
     verificar(PRODUCT_INFO_URL);
     verificar(PRODUCT_INFO_COMMENTS_URL);
+
+    btnComprar.addEventListener('click', addCarrito);
+    
 });    
