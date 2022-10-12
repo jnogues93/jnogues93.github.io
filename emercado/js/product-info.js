@@ -6,6 +6,8 @@ let comprar = [];
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
 let btnComprar = document.getElementById('btnComprar');
+//localStorage.setItem("comprado", JSON.stringify(comprar));
+//let comprado = JSON.parse(localStorage.getItem("comprado"));
 
 //Funcion para verificar que url se consulta
 function verificar(url){
@@ -28,8 +30,10 @@ function verificar(url){
     }
 }
 
+// Funcion para agregar mas articulos al carrito
 function addCarrito() {
-    articulocomprar = {
+    let agregado = JSON.parse(localStorage.getItem('ArtComprado'));
+    let articulocomprar = {
         count: 1,
         currency: item.currency,
         id: item.id,
@@ -37,8 +41,8 @@ function addCarrito() {
         name: item.name,
         unitCost: item.cost
         };
-        //comprar.push(articulocomprar);
-        localStorage.setItem("ArtComprado", JSON.stringify(articulocomprar));
+        agregado.push({...articulocomprar});
+        localStorage.setItem('ArtComprado', JSON.stringify(agregado));
         window.location = "cart.html"
 }
 

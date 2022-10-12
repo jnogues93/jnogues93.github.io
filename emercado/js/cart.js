@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	getJSONData(`${CART_INFO_URL}${id_carrito}${EXT_TYPE}`).then(function(JSON){
                 if (JSON.status === "ok"){
                     carrito = JSON.data.articles;
-					carrito.push(newcarrito)
-                    pintarCarrito();   
+					for(const compra of newcarrito){
+					carrito.push({...compra})
+					pintarCarrito();
+					}
                 }
             });
 		})
