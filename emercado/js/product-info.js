@@ -2,11 +2,11 @@ let item = [];
 let imagen = [];
 let comentario = [];
 let relacionado = [];
-let comprar = [];
+let comprar = {}
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
 let btnComprar = document.getElementById('btnComprar');
-//localStorage.setItem("comprado", JSON.stringify(comprar));
+//localStorage.setItem('comprado', JSON.stringify(comprar));
 //let comprado = JSON.parse(localStorage.getItem("comprado"));
 
 //Funcion para verificar que url se consulta
@@ -32,18 +32,33 @@ function verificar(url){
 
 // Funcion para agregar mas articulos al carrito
 function addCarrito() {
-    let agregado = JSON.parse(localStorage.getItem('ArtComprado'));
-    let articulocomprar = {
-        count: 1,
-        currency: item.currency,
-        id: item.id,
-        image: imagen[0],
-        name: item.name,
-        unitCost: item.cost
-        };
-        agregado.push({...articulocomprar});
-        localStorage.setItem('ArtComprado', JSON.stringify(agregado));
-        window.location = "cart.html"
+    if(localStorage.getItem('ArtComprado')){
+        let agregado = JSON.parse(localStorage.getItem('ArtComprado'));
+
+        let articulocomprar = {
+            count: 1,
+            currency: item.currency,
+            id: item.id,
+            image: imagen[0],
+            name: item.name,
+            unitCost: item.cost
+            };
+            agregado.push({...articulocomprar});
+            localStorage.setItem('ArtComprado', JSON.stringify(agregado));
+            window.location = "cart.html"
+    }   else {
+        let articulocomprar = {
+            count: 1,
+            currency: item.currency,
+            id: item.id,
+            image: imagen[0],
+            name: item.name,
+            unitCost: item.cost
+            };
+            comprar = [{...articulocomprar}];
+            localStorage.setItem('ArtComprado', JSON.stringify(comprar));
+            window.location = "cart.html"
+    }
 }
 
 //Funcion que agrega el comentario nuevo
