@@ -6,8 +6,6 @@ let comprar = {}
 let id_articulo = localStorage.getItem("artID");
 let btnComentario = document.getElementById('btnComentario');
 let btnComprar = document.getElementById('btnComprar');
-//localStorage.setItem('comprado', JSON.stringify(comprar));
-//let comprado = JSON.parse(localStorage.getItem("comprado"));
 
 //Funcion para verificar que url se consulta
 function verificar(url){
@@ -31,7 +29,8 @@ function verificar(url){
 }
 
 // Funcion para agregar mas articulos al carrito
-function addCarrito() {
+//function addCarrito() {
+btnComprar.addEventListener('click', () => {
     if(localStorage.getItem('ArtComprado')){
         let agregado = JSON.parse(localStorage.getItem('ArtComprado'));
 
@@ -59,7 +58,7 @@ function addCarrito() {
             localStorage.setItem('ArtComprado', JSON.stringify(comprar));
             window.location = "cart.html"
     }
-}
+});
 
 //Funcion que agrega el comentario nuevo
 function newComentario(){
@@ -190,6 +189,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     verificar(PRODUCT_INFO_URL);
     verificar(PRODUCT_INFO_COMMENTS_URL);
 
-    btnComprar.addEventListener('click', addCarrito);
+    //btnComprar.addEventListener('click', addCarrito);
     
 });    
