@@ -33,7 +33,7 @@ function verificar(url){
 btnComprar.addEventListener('click', () => {
     if(localStorage.getItem('ArtComprado')){
         let agregado = JSON.parse(localStorage.getItem('ArtComprado'));
-
+        console.log(agregado);
         let articulocomprar = {
             count: 1,
             currency: item.currency,
@@ -42,9 +42,17 @@ btnComprar.addEventListener('click', () => {
             name: item.name,
             unitCost: item.cost
             };
+            if(agregado.filter(function(articulo) { return articulo.id === articulocomprar.id}).length == 0){
             agregado.push({...articulocomprar});
             localStorage.setItem('ArtComprado', JSON.stringify(agregado));
             window.location = "cart.html"
+            }else {
+                let valorUpdate = agregado.findIndex(function(articulo) { return articulo.id === articulocomprar.id});
+                console.log(valorUpdate)
+                agregado[valorUpdate].count++;
+                localStorage.setItem('ArtComprado', JSON.stringify(agregado));
+                window.location = "cart.html"
+            }
     }   else {
         let articulocomprar = {
             count: 1,

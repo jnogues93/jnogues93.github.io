@@ -1,5 +1,5 @@
-const ASC_BY_NAME = "Ascendente";
-const DESC_BY_NAME = "Descendente";
+const ASC_BY_PRICE = "Ascendente";
+const DESC_BY_PRICE = "Descendente";
 const ORDER_PROD_COUNT = "Cantidad";
 let CriteriaSort = undefined;
 let min = undefined;
@@ -9,14 +9,14 @@ let id_categoria = localStorage.getItem("catID");
 
 function sortProducts(criteria, array){
     let result = [];
-    if (criteria === ASC_BY_NAME)
+    if (criteria === ASC_BY_PRICE)
     {
         result = array.sort(function(a, b) {
             if ( a.cost < b.cost ){ return -1; }
             if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === DESC_BY_NAME){
+    }else if (criteria === DESC_BY_PRICE){
         result = array.sort(function(a, b) {
             if ( a.cost > b.cost ){ return -1; }
             if ( a.cost < b.cost ){ return 1; }
@@ -59,8 +59,8 @@ function showProducts(){
     if(id_categoria) {
     for(let producto of lista){ 
 
-        if (((min == undefined) || (min != undefined && parseInt(producto.soldCount) >= min)) &&
-        ((max == undefined) || (max != undefined && parseInt(producto.soldCount) <= max))){
+        if (((min == undefined) || (min != undefined && parseInt(producto.cost) >= min)) &&
+        ((max == undefined) || (max != undefined && parseInt(producto.cost) <= max))){
 
         verarticulos += verhtml(producto);
         document.getElementById("cat-list-container").innerHTML = verarticulos;
@@ -82,7 +82,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
     showProducts();
 }
 
-function findProducts () {
+function findProducts() {
     //Obtengo en tiempo real la busqueda
     let verarticulos = '';
     const buscar = document.getElementById('rangeFilterSearch');
@@ -103,38 +103,7 @@ function findProducts () {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(`${PRODUCTS_URL}${id_categoria}${EXT_TYPE}`).then(function(JSON){
-        if (JSON.status === "ok")
-        {
-            lista = JSON.data.products;
-            showProducts();
-        }
-    });
-
-    document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowProducts(ASC_BY_NAME);
-    });
-
-    document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowProducts(DESC_BY_NAME);
-    });
-
-    document.getElementById("sortByCount").addEventListener("click", function(){
-        sortAndShowProducts(ORDER_PROD_COUNT);
-    });
-
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
-
-        min = undefined;
-        max = undefined;
-
-        showProducts();
-    });
-
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+function filterPrice(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de articulos vendidos.
         min = document.getElementById("rangeFilterCountMin").value;
@@ -155,7 +124,44 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
         showProducts();
+}
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(`${PRODUCTS_URL}${id_categoria}${EXT_TYPE}`).then(function(JSON){
+        if (JSON.status === "ok")
+        {
+            lista = JSON.data.products;
+            sortAndShowProducts(DESC_BY_PRICE);
+            filterPrice()
+        }
+    });
+
+    document.getElementById("sortAsc").addEventListener("click", function(){
+        sortAndShowProducts(ASC_BY_PRICE);
+    });
+
+    document.getElementById("sortDesc").addEventListener("click", function(){
+        sortAndShowProducts(DESC_BY_PRICE);
+    });
+
+    document.getElementById("sortByCount").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_PROD_COUNT);
+    });
+
+    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+        document.getElementById("rangeFilterCountMin").value = "";
+        document.getElementById("rangeFilterCountMax").value = "";
+
+        min = undefined;
+        max = undefined;
+
+        showProducts();
+    });
+
+    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+        filterPrice();
     });
 
     document.getElementById("rangeFilterSearch").addEventListener("keyup", findProducts)
+
 });

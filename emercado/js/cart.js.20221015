@@ -1,42 +1,41 @@
+let carrito = []
 let id_carrito = 25801;
 let newcarrito = JSON.parse(localStorage.getItem('ArtComprado'));
 const items = document.getElementById('items')
-const mensaje = document.getElementById('footer')
+const footer = document.getElementById('footer')
 const informacion = document.getElementById('informacion')
 const templateFooter = document.getElementById('template-footer').content
 const templateCarrito = document.getElementById('template-carrito').content
 const templateInformacion = document.getElementById('template-informacion').content
 const fragment = document.createDocumentFragment()
 
-//Se carga el JSON del carrito fijo y se controla la carga cuando se agrega un articulo de alguna categoria
 document.addEventListener('DOMContentLoaded', ()=>{
-	getJSONData(`${CART_INFO_URL}${id_carrito}${EXT_TYPE}`).then(function(json){
-                if (json.status === "ok"){
-					if(newcarrito !== null){
-						if(newcarrito.length == 1) {
-							newcarrito.push(...json.data.articles);
-							articuloFijo = JSON.stringify(newcarrito);
-							localStorage.setItem('ArtComprado', articuloFijo);
-							pintarCarrito();
-						}else{
-							pintarCarrito();
+	getJSONData(`${CART_INFO_URL}${id_carrito}${EXT_TYPE}`).then(function(JSON){
+                if (JSON.status === "ok"){
+                    carrito = JSON.data.articles;
+					if(newcarrito){
+						for(const compra of newcarrito){
+						carrito.push({...compra})
+						pintarCarrito();
 						}
 					}
-				}
+				pintarCarrito();
+                }
             });
-		});
+		})
 
-//Eventos para los botones de aumentar o reducir cantidad del articulo seleccionado
 items.addEventListener('click', e=>{
 	btnAccion(e)
 })
 
-//Funcion que carga el HTML con los datos dinamicos de cada articulo
 function pintarCarrito(){
     items.innerHTML = ''
-	mensaje.innerHTML = ''
+	if(Object.keys(carrito).length === 0){
+        pintarFooter()
+        return
+    }
     	let id = 0;
-				for (const producto of newcarrito) {      
+				for (const producto of carrito) {      
 				templateCarrito.querySelector('th').textContent = producto.id
 				templateCarrito.querySelector('td img').setAttribute('src', producto.image)
 				templateCarrito.querySelectorAll('td')[1].textContent = producto.name
@@ -52,10 +51,10 @@ function pintarCarrito(){
 				id++;
 				}
 				pintarFooter()
-				pintarInformacion()
 		}
+		pintarInformacion()
+//}
 
-//Funcion que suma la cantidad por articulo
 function CantidadArticulos(array) {
 	let sum = 0; 
   
@@ -66,12 +65,18 @@ function CantidadArticulos(array) {
   return sum;
   }
 
-//Funcion para ver total de Articulos, Total del Costo del carrito y Boton para limpiar carrito
 function pintarFooter() {
+		footer.innerHTML = ''
+		if(Object.keys(carrito).length === 0){
+			footer.innerHTML = `
+			<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+			`
+			return
+		}
 
-		const ncantidad = newcarrito.map(object => object.count);
+		const ncantidad = carrito.map(object => object.count);
 		const sum = CantidadArticulos(ncantidad)
-		const nPrecio = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost, 0)
+		const nPrecio = carrito.reduce((acc, {count, unitCost}) => acc + count * unitCost, 0)
 		
 		templateFooter.querySelectorAll('td')[0].textContent = sum
 		templateFooter.querySelector('span').textContent = nPrecio
@@ -82,13 +87,11 @@ function pintarFooter() {
 	
 		const btnVaciar = document.getElementById('vaciar-carrito')
 		btnVaciar.addEventListener('click', ()=>{
-			localStorage.removeItem('ArtComprado');
+			carrito = []
 			pintarCarrito()
-			window.location.reload();
 		})
 	}
 
-//Funcion para cargar el formulario de datos de envío
 function pintarInformacion() {
 	informacion.innerHTML = ''
 		const clone = templateInformacion.cloneNode(true)
@@ -96,20 +99,29 @@ function pintarInformacion() {
         informacion.appendChild(fragment)
 }
 
-//Funcion para los eventos en los botones de aumentar y reducir cantidad del articulo seleccionado
 const btnAccion = e =>{
 	if(e.target.classList.contains('btn-info')){
-		const producto = newcarrito.findIndex(object => object.id == e.target.id);
-		newcarrito[producto].count++
+		const producto = carrito.findIndex(object => object.id == e.target.id);
+		const producto2 = newcarrito.findIndex(object => object.id == e.target.id);
+		//console.log(producto);
+		console.log(producto2);
+		carrito[producto].count++
+		newcarrito[producto2].count++
 		localStorage.removeItem('ArtComprado');
 		localStorage.setItem('ArtComprado', JSON.stringify(newcarrito));
 		pintarCarrito()
 	}
 
 	if(e.target.classList.contains('btn-danger')){
-		const producto = newcarrito.findIndex(object2 => object2.id == e.target.id);
-		if(newcarrito[producto].count > 0){
-		newcarrito[producto].count--
+		const producto = carrito.findIndex(object => object.id == e.target.id);
+		const producto2 = newcarrito.findIndex(object2 => object2.id == e.target.id);
+		console.log(producto);
+		console.log(producto2);
+		if(producto.length > 0 && carrito[producto].count > 0) {
+		carrito[producto].count--
+		}
+		if(producto2.length > 0 && newcarrito[producto2].count > 0){
+		newcarrito[producto2].count--
 		}
 		localStorage.removeItem('ArtComprado');
 		localStorage.setItem('ArtComprado', JSON.stringify(newcarrito));
@@ -117,10 +129,8 @@ const btnAccion = e =>{
 		}
 	}
 
-//Funcion para actualizar cantidad del articulo escribiendo en el input
 function updateValue(id) {
 		const cantidad = document.getElementById(`${id}`).value;
-		newcarrito[id].count = cantidad
-		localStorage.setItem('ArtComprado', JSON.stringify(newcarrito));
+		carrito[id].count = cantidad
 		pintarCarrito()
 }
