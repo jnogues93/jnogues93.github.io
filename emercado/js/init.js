@@ -45,31 +45,34 @@ function setArticuloID(id) {
   window.location = "product-info.html"
 }
 
-function verModal(){
+function verModal(id){
   $(document).ready(function(){
-    $("#modal").modal({ backdrop: 'static', keyboard: false });
-    $("#modal").modal('show');
+    $(id).modal({ backdrop: 'static', keyboard: false });
+    $(id).modal('show');
   });
 }
 
 //## Agregar Modal ##
 let showmodal = `
-<div class="modal" id="modal" tabindex="-1">
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal">
 <div class="modal-dialog">
   <div class="modal-content modalblur">
     <div class="modal-header">
+      <strong><h4>Ups !</h4></strong>
     </div>
     <div class="modal-body">
-      <p>Para ver el contenido debe Iniciar Sesion</p>
+      <h6>Para ver el contenido debe Iniciar Sesion</h6>
     </div>
     <div class="modal-footer">
-      <button type="button" onclick="location.href='./index.html';" class="btn btn-primary">Iniciar Sesion</button>
+      <button type="button" onclick="location.href='./index.html';" class="btn btn-danger">Iniciar Sesion</button>
     </div>
   </div>
 </div>
 </div>
 `
-document.getElementById("addModal").innerHTML += showmodal
+if(document.getElementById("addModal")){
+document.getElementById("addModal").innerHTML = showmodal
+}
 
 //#########################################################//
 // Funciones para agregar campos de Profile/Login
@@ -111,7 +114,7 @@ let profilegoogle = `
        `
        document.getElementById("menu").innerHTML += profilegoogle
 }else {
-  verModal();
+  verModal(modal);
 }
 
 //#########################################################//

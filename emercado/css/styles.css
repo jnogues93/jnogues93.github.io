@@ -207,6 +207,10 @@ a.custom-card:hover {
   background-color: rgba(0,0,0, 0.95) !important;
 }
 
+td,th {
+  text-align: center;   
+}
+
 td img {
   width: 130px;
   height: 80px;
@@ -216,4 +220,9 @@ td img {
     left:0;
     right:0;
     width:50% !important;
+    margin: auto;
   }
+
+body {
+  background-color: #ECEAEA;
+}
