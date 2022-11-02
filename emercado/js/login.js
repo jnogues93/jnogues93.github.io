@@ -10,11 +10,15 @@ validopasswd = document.getElementById('passwOK');
 
 
  if( email == "" || passwd == "" ) {
-  alert('Usuario y/o Contraseña No pueden estar Vacio!');
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Usuario y/o Contraseña No pueden estar Vacio!',
+    })	  
  }else if (!formatoemail.test(email) ) {
-  validoemail.innerText = "Formato de email Incorrecto";
+  Swal.fire('Formato de email Incorrecto')
  }else if (passwd.length < 8) {
-  validopasswd.innerText = "Formato Contraseña Invalido - Largo minimo 8 caracteres";
+  Swal.fire('Formato Contraseña Invalido - Largo minimo 8 caracteres')
  }else {
   localStorage.setItem("userlocal", email);
   location.href = "main.html";

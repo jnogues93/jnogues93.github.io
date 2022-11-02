@@ -52,28 +52,6 @@ function verModal(id){
   });
 }
 
-//## Agregar Modal ##
-let showmodal = `
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal">
-<div class="modal-dialog">
-  <div class="modal-content modalblur">
-    <div class="modal-header">
-      <strong><h4>Ups !</h4></strong>
-    </div>
-    <div class="modal-body">
-      <h6>Para ver el contenido debe Iniciar Sesion</h6>
-    </div>
-    <div class="modal-footer">
-      <button type="button" onclick="location.href='./index.html';" class="btn btn-danger">Iniciar Sesion</button>
-    </div>
-  </div>
-</div>
-</div>
-`
-if(document.getElementById("addModal")){
-document.getElementById("addModal").innerHTML = showmodal
-}
-
 //#########################################################//
 // Funciones para agregar campos de Profile/Login
 
@@ -114,7 +92,21 @@ let profilegoogle = `
        `
        document.getElementById("menu").innerHTML += profilegoogle
 }else {
-  verModal(modal);
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Debe estar logueado para ver el contenido!',
+    showConfirmButton: true,
+    confirmButtonColor: '#d33',
+    confirmButtonText: 'Login',
+    background: '#fff',
+    backdrop: 'rgba(0,0,123,0.4)',
+    allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+          location.href='./index.html'
+      }
+    })
 }
 
 //#########################################################//

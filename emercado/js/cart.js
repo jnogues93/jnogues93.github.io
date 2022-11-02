@@ -37,7 +37,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
 						}
 					}else{
 						titles.hidden = true;
-						verModal(modalCarrito);
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Carrito vacío - comience a comprar!',
+							showConfirmButton: true,
+							confirmButtonColor: '#d33',
+							confirmButtonText: 'Ver Categorias',
+							allowOutsideClick: false
+							}).then((result) => {
+								  if (result.isConfirmed) {
+										location.href='./categories.html'
+								}
+							})
 						}
 		});
 
@@ -93,7 +105,7 @@ function pintarCarrito(){
 function pintarFooter() {
 
 		const cantidad = newcarrito.map(object => object.count);
-		const ncantidad = CantidadArticulos(cantidad)
+		const ncantidad = sumarCantidad(cantidad)
 		
 		templateFooter.querySelectorAll('td')[0].textContent = ncantidad
 	
@@ -132,7 +144,8 @@ function pintarInformacion() {
 //Funcion para ver totales del Carrito
 function pintarTotales() {
 totales.innerHTML = '';
-	const subTotal = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost , 0)
+	//const subTotal = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost , 0)
+	const subTotal = sumSubTotal(newcarrito)
 	
 		templateTotales.getElementById('subtotal').textContent = "USD" + " " + subTotal
 	if(localStorage.getItem('costoEnvio') !== null){
@@ -160,7 +173,7 @@ function pintarPagos() {
 //###### FUNCIONES #######
 
 //Funcion que suma la cantidad por articulo
-function CantidadArticulos(array) {
+function sumarCantidad(array) {
 	let sum = 0; 
   
   for (const cantidad of array) {
@@ -169,6 +182,20 @@ function CantidadArticulos(array) {
   
   return sum;
   }
+
+//Funcion para calcular SubTotal
+function sumSubTotal(array) {
+	let sum = 0; 
+  
+  for (const total of array) {
+	if(total.currency === "UYU"){
+	sum += parseInt((total.count * total.unitCost) / dolar);
+  	}else {
+	sum += parseInt(total.count * total.unitCost)
+  	}
+  }
+  return sum;
+} 
 
 //Funcion para los eventos en los botones de aumentar y reducir cantidad del articulo seleccionado
 const btnCantidad = e =>{
@@ -220,21 +247,21 @@ const btnCantidad = e =>{
 //Funcion para actualizar envio en vivo
 const eventosEnvios = envio => {
 	if(envio === 'envioPremium'){
-		const costoEnvio = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost, 0) * 0.15
+		const costoEnvio = parseInt(sumSubTotal(newcarrito)) * 0.15
 		localStorage.setItem('costoEnvio', costoEnvio.toFixed(0));
 		localStorage.setItem('tipoEnvio', 'envioPremium');
 		pintarTotales()
 	}
 
 	if(envio === 'envioExpress'){
-		const costoEnvio = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost, 0) * 0.07
+		const costoEnvio = parseInt(sumSubTotal(newcarrito)) * 0.07
 		localStorage.setItem('costoEnvio', costoEnvio.toFixed(0));
 		localStorage.setItem('tipoEnvio', 'envioExpress');
 		pintarTotales()
 		}
 
 	if (envio === 'envioStandard'){
-		const costoEnvio = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost, 0) * 0.05
+		const costoEnvio = parseInt(sumSubTotal(newcarrito)) * 0.05
 		localStorage.setItem('costoEnvio', costoEnvio.toFixed(0));
 		localStorage.setItem('tipoEnvio', 'envioStandard');
 		pintarTotales()
@@ -293,21 +320,42 @@ function finalizaCarrito(){
 		
       form.addEventListener('submit', event => {
 
-		if(localStorage.getItem('pagoSelect') === null){
+        if (!form.checkValidity()) {
 			document.getElementById('btn-pagos').style.color = "#dc3545";
 			document.getElementById('mensajePagos').innerHTML = "Debe seleccionar un medio de Pago"
 			document.getElementById('mensajePagos').hidden = false;
-			event.preventDefault()
-			event.stopPropagation()
-		}
-
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-		else {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Debe completar los campos!',
+			  })
+			  event.preventDefault()
+			  event.stopPropagation()
+			
+		}else if(localStorage.getItem('pagoSelect') === null){
+			document.getElementById('btn-pagos').style.color = "#dc3545";
+			document.getElementById('mensajePagos').innerHTML = "Debe seleccionar un medio de Pago"
+			document.getElementById('mensajePagos').hidden = false;
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Debe seleccionar un Pago',
+			  })	  
+		    event.preventDefault()
+        	event.stopPropagation()
+        
+		}else {
 			finalizaCarrito()
-			verModal(modalOK)
+			Swal.fire({
+				icon: 'success',
+				title: 'Compra finalizada con exito',
+				showConfirmButton: true,
+				confirmButtonText: 'Inicio'
+				}).then((result) => {
+  					if (result.isConfirmed) {
+   	 					location.href='./main.html'
+					}
+				})
 			event.preventDefault()
 			event.stopPropagation()
 		}

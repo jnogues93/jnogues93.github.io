@@ -48,7 +48,6 @@ btnComprar.addEventListener('click', () => {
             window.location = "cart.html"
             }else {
                 let valorUpdate = agregado.findIndex(function(articulo) { return articulo.id === articulocomprar.id});
-                console.log(valorUpdate)
                 agregado[valorUpdate].count++;
                 localStorage.setItem('ArtComprado', JSON.stringify(agregado));
                 window.location = "cart.html"

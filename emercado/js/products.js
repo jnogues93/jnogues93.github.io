@@ -127,6 +127,25 @@ function filterPrice(){
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
+    if(!GoogleEmail && !LocalEmail){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Debe estar logueado para ver el contenido!',
+            showConfirmButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Login',
+            background: '#fff',
+            backdrop: 'rgba(0,0,123,0.4)',
+            allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  location.href='./index.html'
+              }
+            })
+    }else{
+        document.getElementById('controles').hidden = false;
+        document.getElementById('controles2').hidden = false;
     getJSONData(`${PRODUCTS_URL}${id_categoria}${EXT_TYPE}`).then(function(JSON){
         if (JSON.status === "ok")
         {
@@ -163,5 +182,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterSearch").addEventListener("keyup", findProducts)
+
+}
 
 });

@@ -42,7 +42,25 @@ function setCatID(id) {
 
 
 function showCategoriesList(){
-
+if(!GoogleEmail && !LocalEmail){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Debe estar logueado para ver el contenido!',
+        showConfirmButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Login',
+        background: '#fff',
+        backdrop: 'rgba(0,0,123,0.4)',
+        allowOutsideClick: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+              location.href='./index.html'
+          }
+        })
+}else{
+    document.getElementById('controles').hidden = false;
+    document.getElementById('controles2').hidden = false;
     let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
@@ -70,6 +88,7 @@ function showCategoriesList(){
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
+}
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
