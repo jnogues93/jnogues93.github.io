@@ -42,22 +42,23 @@
   <main class="d-block">
       <div class="container">
         <form action="" method="get" class="needs-validation" novalidate>
-        <table class="table table-success table-striped table-borderless">
+        <table class="table table-borderless">
           <thead>
-            <tr id="titulos" class="table-secondary">
+            <tr id="titulos">
             <th scope="col">ID</th>
             <th scope="col">Img</th>
             <th scope="col">Item</th>
             <th scope="col">Cantidad</th>
-            <th scope="col">Editar Cantidad</th>
+            <th scope="col" class=" d-none d-lg-block">Editar Cantidad</th>
+            <th scope="col" class="d-lg-none">Sub. Total</th>
             <th scope="col">Eliminar</th>
-            <th scope="col" class="d-none d-lg-block">Sub. Total</th>
+            <th scope="col" class=" d-none d-lg-block">Sub. Total</th>
             </tr>
           </thead>
           
           <tbody id="items"></tbody>
           <tfoot>
-            <tr id="footer" class="table-secondary">
+            <tr id="footer">
             <th scope="row" colspan="9">Carrito vacío - comience a comprar!</th>
             </tr>
           </tfoot>
@@ -151,21 +152,8 @@
                 vaciar carrito
             </button>
         </td>
-        <td></td>
+        <td class="d-none d-lg-block"></td>
     </template>
-
-      <template id="template-footer">
-            <th scope="row" colspan="3">Total productos</th>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="btn btn-danger btn-sm" id="vaciar-carrito">
-                    vaciar carrito
-                </button>
-            </td>
-            <td></td>
-            <!--<td class="font-weight-bold">UYU <span id="valoruy">5000</span><br/>USD <span id="valorusd">5000</span></td>-->
-        </template>
         
         <template id="template-carrito">
           
@@ -174,7 +162,7 @@
             <td><img class="img-fluid"></td>
             <td>Café</td>
             <td><input oninput="this.value = Math.max(this.value, 1)" class="form-control cantidad" pattern="^[0-9]+"></td>
-            <td>
+            <td class="d-none d-lg-block">
                 <button class="btn btn-info btn-sm">
                     +
                 </button>
@@ -182,12 +170,13 @@
                     -
                 </button>
             </td>
+            <td class="d-lg-none"><span class="d-lg-none"></span></td>
             <td>
               <button class="btn btn-outline-danger btn-sm rounded-0 btndelete">
                 <i class="fa fa-trash btndelete"></i>
               </button>
             </td>
-            <td><span class="d-none d-lg-block"></span></td>
+            <td class="d-none d-lg-block"><span class="d-none d-lg-block"></span></td>
           </tr>
         </template>
 

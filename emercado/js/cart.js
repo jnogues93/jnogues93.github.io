@@ -84,11 +84,15 @@ function pintarCarrito(){
 				templateCarrito.querySelector('td input').setAttribute('onchange',"updateValue(this.id);")
 				templateCarrito.querySelector('.btn-info').setAttribute('id',`${producto.id}`)
 				templateCarrito.querySelector('.btn-danger').setAttribute('id',`${producto.id}`)
-				if(producto.currency === "UYU"){
-					templateCarrito.querySelector('span').textContent = "USD" + " " + ((producto.count * producto.unitCost) / dolar).toFixed(0)
-				}else{
-					templateCarrito.querySelector('span').textContent = producto.currency + " " + producto.count * producto.unitCost
-				}
+				templateCarrito.querySelectorAll('span').forEach((span => {
+					if(producto.currency === "UYU"){
+						span.textContent = "USD" + " " + ((producto.count * producto.unitCost) / dolar).toFixed(0)
+					}
+					else{
+						span.textContent = producto.currency + " " + producto.count * producto.unitCost
+					}
+				}))
+
 				const clone = templateCarrito.cloneNode(true)
 				fragment.appendChild(clone)
 				items.appendChild(fragment)
