@@ -40,30 +40,29 @@
     </div>
   </nav>
   <main class="d-block">
-    <div class="container">
       <div class="container">
         <form action="" method="get" class="needs-validation" novalidate>
-        <table class="table">
+        <table class="table table-success table-striped table-borderless">
           <thead>
-            <tr id="titulos">
-            <th scope="col">#</th>
+            <tr id="titulos" class="table-secondary">
+            <th scope="col">ID</th>
             <th scope="col">Img</th>
             <th scope="col">Item</th>
             <th scope="col">Cantidad</th>
-            <th scope="col">Edit. Cant</th>
+            <th scope="col">Editar Cantidad</th>
             <th scope="col">Eliminar</th>
-            <th scope="col">Sub. Total</th>
+            <th scope="col" class="d-none d-lg-block">Sub. Total</th>
             </tr>
           </thead>
           
           <tbody id="items"></tbody>
           <tfoot>
-            <tr id="footer">
+            <tr id="footer" class="table-secondary">
             <th scope="row" colspan="9">Carrito vacío - comience a comprar!</th>
             </tr>
           </tfoot>
           </table>
-          
+          <hr>
           
           <div id="envios"></div>
           <div id="informacion"></div>
@@ -153,7 +152,6 @@
             </button>
         </td>
         <td></td>
-        <!--<td class="font-weight-bold">UYU <span id="valoruy">5000</span><br/>USD <span id="valorusd">5000</span></td>-->
     </template>
 
       <template id="template-footer">
@@ -189,7 +187,7 @@
                 <i class="fa fa-trash btndelete"></i>
               </button>
             </td>
-            <td><span></span></td>
+            <td><span class="d-none d-lg-block"></span></td>
           </tr>
         </template>
 
@@ -317,7 +315,6 @@
                       </div>
                       <hr>
         </template>
-      </div>
 
     </div>
   </main>
