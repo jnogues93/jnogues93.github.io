@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById('telefono').setAttribute('value', p.telefono)
     document.getElementById('telefono').setAttribute('disabled', '')
 
+    if(localStorage.getItem("fotoPerfil")){
+    document.querySelector("#imgperfil").src = localStorage.getItem("fotoPerfil")
+    }
+    
     document.getElementById('btnEditar').hidden = false;
   }else{
     Swal.fire('Debe completar los datos')
@@ -143,11 +147,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
                       confirmButtonText: 'Revisar',
                       }).then((result) => {
                         if (result.isConfirmed) {
-                    document.getElementById('file').classList.add('is-invalid')
+                    //document.getElementById('file').classList.add('is-invalid')
                     location.reload();
+                        }
+                          })
                   }
-                })
-                  }else{
+                  else{
                     location.reload();
                   }
           }

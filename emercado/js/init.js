@@ -66,7 +66,7 @@ GoogleEmail = localStorage.getItem("getEmail");
 if(LocalEmail) {
 let profilelocal = `
           <li class="nav-item dropdown" id="login">
-            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown">
             ${LocalEmail}
             </a>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -80,7 +80,7 @@ let profilelocal = `
 }else if(GoogleEmail) {
 let profilegoogle = `
           <li class="nav-item dropdown" id="login">
-            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="emaillocal nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown">
             ${GoogleEmail}
             </a>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDarkDropdownMenuLink">
