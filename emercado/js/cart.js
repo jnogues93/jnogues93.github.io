@@ -144,7 +144,6 @@ function pintarInformacion() {
 //Funcion para ver totales del Carrito
 function pintarTotales() {
 totales.innerHTML = '';
-	//const subTotal = newcarrito.reduce((acc, {count, unitCost}) => acc + count * unitCost , 0)
 	const subTotal = sumSubTotal(newcarrito)
 	
 		templateTotales.getElementById('subtotal').textContent = "USD" + " " + subTotal

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Proyecto Ocupacional</title>
+
+    <style>
+#cuadro1 {
+    height: 24rem;
+    background-color: rgb(189, 215, 255);
+}
+
+#cuadro2 {
+    height: 24rem;
+    background-color: rgb(217, 255, 208);
+}
+
+#cuadro3 {
+    height: 24rem;
+    background-color: rgb(255, 238, 200);
+}
+
+#cuadro4 {
+    height: 24rem;
+    background-color: rgb(255, 210, 210);
+}
+
+main {
+    min-height: calc(100vh - 210px);
+  }
+
+body{
+    background-color: lightseagreen;
+}
+
+.imagenpo {
+    max-height: 50rem;
+    max-width: 40rem;
+}
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12 text-center my-3">
+                <h2>PROYECTO OCUPACIONAL</h2>
+                <h4>Juan Nogues</h4>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+        <div class="card border p-3 my-3 position-relative" style="width: 18rem;" id="cuadro1">
+          <img class="card-img-top" src="./prog2.gif" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Autodiagnostico</h5>
+              <p class="card-text">Reconocimiento de habilidades, experiencias, deseos e intereses.</p>
+              <button type="button" class="btn btn-primary position-absolute bottom-0 mb-3" data-bs-toggle="modal" data-bs-target="#autodiagnostico">Ver</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card border p-3 my-3 position-relative" style="width: 18rem;" id="cuadro2">
+            <img class="card-img-top" src="./prog.gif" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Metas y Objetivos</h5>
+              <p class="card-text">Uso de metodología SMART.</p>
+              <button type="button" class="btn btn-primary position-absolute bottom-0 mb-3" data-bs-toggle="modal" data-bs-target="#metasyobjetivos">Ver</button>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+          <div class="card border p-3 my-3 position-relative" style="width: 18rem;" id="cuadro3">
+            <img class="card-img-top" src="./organizacion1.gif" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Plan de Acción</h5>
+              <p class="card-text">Se toman en cuenta prioridades, tiempo, recusos, organizacion, etc.</p>
+              <button type="button" class="btn btn-primary position-absolute bottom-0 mb-3" data-bs-toggle="modal" data-bs-target="#planaccion">Ver</button>            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card border p-3 my-3 position-relative" style="width: 18rem;" id="cuadro4">
+            <img class="card-img-top" src="./prog3.gif" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Reflexión</h5>
+              <p class="card-text">Cierre sobre el transito en CT y los aprendizajes.</p>
+              <button type="button" class="btn btn-primary position-absolute bottom-0 mb-3" data-bs-toggle="modal" data-bs-target="#reflexion">Ver</button>            </div>
+          </div>
+        </div>
+
+        </div>
+        </div>
+
+        <div class="col-md-6">
+          <br>
+          <br>
+          <br>
+            <img src="./plan_accion3.jpg" class="rounded imagenpo">
+            <hr>
+            <img src="./plan_accion2.png" class="rounded imagenpo">
+        </div>
+        
+        </div>
+
+        <!-- Modal Autodiagnostico-->
+  <div class="modal fade" id="autodiagnostico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #7AD680;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Autodiagnostico</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: #D9E7D9;">
+          <img class="card-img-top" src="./autodiagnostico2.gif" alt="Card image cap">
+          <hr>
+            <h4>Habilidades</h4>
+            <ul>
+                <li> Experiencia en programacion</li>
+                <li> Experiencia en Administracion de Sistemas</li>
+                <li> Proactivo</li>
+                <li> Autodidacta</li>
+                <li> Trabajo muy bien en Equipo</li>
+                <li> Determinado</li>
+                <li> Muy buena comunicación</li>
+                <li> Buena autogestion</li>
+                <li> Facilidad para relacionarme con el resto del grupo</li>
+            </ul>
+            <hr>
+            <h4>Experiencias</h4>
+            <ul>
+                <li> Primer experiencia laboral de muy joven</li>
+                <li> Responsabilidades inesperadas dentro de los diferentes puestos de trabajo</li>
+                <li> La Paternidad a nivel general</li>
+            </ul>
+            <hr>
+            <h4>Deseos</h4>
+            <ul>
+                <li> Crecer profesionalmente</li>
+                <li> Terminar los objetivos y metas marcadas</li>
+            </ul>
+            <hr>
+            <h4>Intereses</h4>
+            <ul>
+                <li> Programacion</li>
+                <li> DevOps y Administracion de Sistemas</li>
+                <li> Deportes en conjunto con TI</li>
+            </ul>
+            <hr>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Metas y Objetivos-->
+  <div class="modal fade" id="metasyobjetivos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #7AD680;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Metas y Objetivos</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: #D9E7D9;">
+          <img class="card-img-top" src="./myo1.gif" alt="Card image cap">
+          <hr>
+            <h4>Fin del 2022</h4>
+            <ul>
+                <li> Rendir Examen de Certificación por parte de Mi Trabajo Actual</li>
+                <li> Finalizar Jovenes a Programar</li>
+                <li> Conseguir mi maximo nivel de Ingles dentro de Voxy</li>
+            </ul>
+            <hr>
+            <h4>Mitad/Fin del año 2023</h4>
+            <ul>
+                <li> Mejorar aun mas mis conocimientos con Cursos</li>
+                <li> Mejorar mi perfil Laboral</li>
+                <li> Mejorar los ingresos</li>
+                <li> Mejorar aun mas el nivel de Ingles</li>
+                <li> Finalizar Proyecto Final de Tecnicatura en UTU</li>
+            </ul>
+            <hr>
+            <h4>Dentro de 5 Años</h4>
+            <ul>
+                <li> Crecer profesionalmente</li>
+                <li> Mejorar mi status economico y calidad de vida</li>
+                <li> Tener un titulo Universitario</li>
+            </ul>
+            <hr>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Plan de Accion-->
+  <div class="modal fade" id="planaccion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #7AD680;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Plan Accion</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: #D9E7D9;">
+          <img class="card-img-top" src="./organizacion2.gif" alt="Card image cap">
+          <hr>
+            <h4>Pasos a seguir</h4>
+            <ul>
+                <li> Poner en practica lo aprendido en Fase Dos y utilizar las CT de forma efectiva.</li>
+                <li> Seguir avanzando en la plataforma Voxy.</li>
+                <li> Seguir avanzando en la plataforma Voxy.</li>
+                <li> Ordenar los objetivos en base al tiempo de finalizacion</li>
+                <li> Organizar bien el tiempo para cada tarea, destinar mas tiempo a la tarea mas proxima a terminar</li>
+                <li> Revisar los recusos que tengo y si es necesario sumar alguno para alcanzar los objetivos de corto y mediano plazo</li>
+                <li> El tiempo liberado sumarlo para avanzar con los objetivos de largo plazo</li>
+            </ul>
+            <hr>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Reflexion-->
+  <div class="modal fade" id="reflexion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #7AD680;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Reflexión</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: #D9E7D9;">
+            <ul>
+                <li> Al principio del curso desde Fase 1 tuve cierta incertidumbre con el mismo 
+                  por lo que pensaba de la programación en general, sentia que era un área compleja para pocas personas
+                pero luego de Fase 2 obtuve mucha confianza y ahora logro ver que no es asi y pude obtener las herramientas
+              necesarias para seguir aprendiendo y comenzar en un puesto JR. Tambien destaco el valor de las CT para sumar los extras
+            que se necesitan para enfrentar un puesto de trabajo o poder presentarse a una entrevista dentro de TI u otra área.
+          El curso en general me aporto mucho valor y motivación para poder seguir por mis objetivos y tambien para mejorar algunos aspectos
+        personales que tenia debiles. </li>
+            </ul>
+            <hr>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </main>
+
+</body>
+</html>

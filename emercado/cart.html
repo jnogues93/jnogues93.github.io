@@ -24,6 +24,9 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
+            <img src="./img/emercado.png" alt="" srcset="">
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="main.html">Inicio</a>
           </li>
           <li class="nav-item">
@@ -221,28 +224,28 @@
           <h2>Direccion de Envío</h2>
           <div class="form row g3">
             <div class="col-md-6 mb-3">
-              <label for="validationServer01" class="form-label">Calle</label>
+              <label for="validationServer01" class="form-label">Calle*</label>
               <input type="text" class="form-control" id="validationServer01" placeholder="Calle" required>
               <div class="invalid-feedback">
                 Campos obligatorio
               </div>  
             </div>
             <div class="col-md-6 mb-3">
-              <label for="validationServer02" class="form-label">Esquina</label>
+              <label for="validationServer02" class="form-label">Esquina*</label>
               <input type="text" class="form-control" id="validationServer02" placeholder="Esquina" required>
             </div>
             <div class="invalid-feedback">
               Campos obligatorio
             </div> 
             <div class="col-md-2 mb-3">
-              <label for="validationServer03" class="form-label">Numero</label>
+              <label for="validationServer03" class="form-label">Numero*</label>
               <input oninput="this.value = Math.max(this.value, 1)" class="form-control" id="validationServer03" placeholder="Numero" pattern="^[0-9]+" required>
               <div class="invalid-feedback">
                 Campos obligatorio
               </div> 
             </div>
           <div class="col-md-3">
-            <label for="validationDefault04" class="form-label">Ciudad</label>
+            <label for="validationDefault04" class="form-label">Ciudad*</label>
             <select class="form-select" id="validationDefault04" required>
               <option selected disabled value="">Ciudad...</option>
               <option>Artigas</option>
@@ -270,6 +273,8 @@
             Campos obligatorio
           </div> 
         </div>
+        <br>
+        <p>*Campos obligatorios</p>
           <hr>
         </template>
 

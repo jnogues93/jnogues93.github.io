@@ -226,3 +226,8 @@ td img {
 body {
   background-color: #ECEAEA;
 }
+
+#imgperfil {
+  width: 130px;
+  height: 130px;
+}
