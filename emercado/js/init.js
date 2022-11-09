@@ -117,6 +117,8 @@ function signOut() {
     localStorage.removeItem('userlocal');
     localStorage.removeItem('getName');
     localStorage.removeItem('getEmail');
+    localStorage.removeItem('fotoPerfil');
+    localStorage.removeItem('datosUsuario');
     location.reload();
 }
 //#########################################################//

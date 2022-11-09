@@ -41,6 +41,7 @@ document.getElementById('btnEditar').addEventListener('click', ()=>{
     input.removeAttribute('disabled');
   }))
   document.getElementById('email').setAttribute('disabled', '')
+  document.getElementById('btnGuardar').hidden = false;
 })
 
 
@@ -100,11 +101,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(localStorage.getItem("fotoPerfil")){
     document.querySelector("#imgperfil").src = localStorage.getItem("fotoPerfil")
     }
-    
-    document.getElementById('btnEditar').hidden = false;
-  }else{
-    Swal.fire('Debe completar los datos')
+    document.getElementById('btnGuardar').hidden = true;
   }
+  else {
+    if (LocalEmail){
+    document.getElementById('email').setAttribute('value', localStorage.getItem("userlocal"))
+  }
+  else{
+    document.getElementById('email').setAttribute('value', localStorage.getItem("getEmail"))
+  }
+}
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -136,18 +142,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
             confirmButtonText: 'Confirmar'
             }).then((result) => {
               if (result.isConfirmed) {
-                  //location.href='./main.html'
                   document.getElementById('btnEditar').hidden = false;
                   if(!localStorage.getItem("fotoPerfil")){
                     Swal.fire({
-                      icon: 'error',
+                      icon: 'info',
                       title: 'Oops...',
                       text: 'No cargo ninguna imagen de perfil!',
                       showConfirmButton: true,
                       confirmButtonText: 'Revisar',
                       }).then((result) => {
                         if (result.isConfirmed) {
-                    //document.getElementById('file').classList.add('is-invalid')
                     location.reload();
                         }
                           })

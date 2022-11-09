@@ -42,7 +42,7 @@
   <main class="d-block">
       <div class="container">
         <form action="" method="get" class="needs-validation" novalidate>
-        <table class="table table-borderless">
+        <table class="table table-borderless table-sm">
           <thead>
             <tr id="titulos">
             <th scope="col">ID</th>
@@ -59,7 +59,6 @@
           <tbody id="items"></tbody>
           <tfoot>
             <tr id="footer">
-            <th scope="row" colspan="9">Carrito vacío - comience a comprar!</th>
             </tr>
           </tfoot>
           </table>
@@ -144,15 +143,13 @@
     </form>
       
       <template id="template-footer">
-        <th scope="row" colspan="3">Total productos</th>
-        <td></td>
-        <td></td>
-        <td>
+        <th scope="row" colspan="3" class="table-active">Total productos</th>
+        <td class="table-active"></td>
+        <td colspan="3" class="table-active">
             <button class="btn btn-danger btn-sm" id="vaciar-carrito">
                 vaciar carrito
             </button>
         </td>
-        <td class="d-none d-lg-block"></td>
     </template>
         
         <template id="template-carrito">
@@ -209,20 +206,20 @@
         <template id="template-informacion">
           <h2>Direccion de Envío</h2>
           <div class="form row g3">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
               <label for="validationServer01" class="form-label">Calle*</label>
               <input type="text" class="form-control" id="validationServer01" placeholder="Calle" required>
               <div class="invalid-feedback">
                 Campos obligatorio
               </div>  
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
               <label for="validationServer02" class="form-label">Esquina*</label>
               <input type="text" class="form-control" id="validationServer02" placeholder="Esquina" required>
             </div>
             <div class="invalid-feedback">
               Campos obligatorio
-            </div> 
+            </div>
             <div class="col-md-2 mb-3">
               <label for="validationServer03" class="form-label">Numero*</label>
               <input oninput="this.value = Math.max(this.value, 1)" class="form-control" id="validationServer03" placeholder="Numero" pattern="^[0-9]+" required>
