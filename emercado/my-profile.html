@@ -92,12 +92,12 @@
           <input type="text" class="form-control" id="segundoApellido" disabled>
         </div>
         <div class="col-6">
-          <label for="telefono" class="form-label">Telefono Contacto*</label>
-          <input type="text" class="form-control" id="telefono" required disabled>
+          <label for="telefono" class="form-label">Telefono Contacto</label>
+          <input type="text" class="form-control" id="telefono" disabled>
         </div>
         <div class="col-6">
           <label for="formFile" class="form-label">Subir foto de perfil</label>
-          <input class="form-control" type="file" id="file" accept="image/png, image/jpg" onchange="subirImagen()" disabled>
+          <input class="form-control" type="file" id="file" accept="image/*" onchange="subirImagen()" disabled>
         </div>
         <div class="col-12 d-flex justify-content-between">
           <button class="btn btn-primary" type="submit" id="btnGuardar" hidden>Guardar</button>

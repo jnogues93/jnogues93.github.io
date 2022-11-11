@@ -47,7 +47,7 @@ document.getElementById('btnEditar').addEventListener('click', ()=>{
 
 const subirImagen = () => {
   let f = document.querySelector("#file");
-  if(f.files && f.files[0]) {
+ if(f.files && f.files[0]) {
     var foto = new FileReader();
     foto.onload = e => {
       guardarImagen(e.target.result);
