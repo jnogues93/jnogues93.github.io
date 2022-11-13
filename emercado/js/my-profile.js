@@ -147,14 +147,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     Swal.fire({
                       icon: 'info',
                       title: 'Oops...',
-                      text: 'No cargo ninguna imagen de perfil!',
+                      html: 'No cargo ninguna imagen de perfil!<br>Puede cargar una editando nuevamente el Perfil',
                       showConfirmButton: true,
-                      confirmButtonText: 'Revisar',
+                      confirmButtonText: 'Ok',
                       }).then((result) => {
                         if (result.isConfirmed) {
-                    location.reload();
+                          location.reload();
                         }
-                          })
+                        })
                   }
                   else{
                     location.reload();
