@@ -8,6 +8,7 @@ email = localStorage.getItem('userlocal');
 email = localStorage.getItem('getEmail');
 }
 
+// Funcion para cargar validar los input y guardar los datos en el array.
 function completarPerfil() {
   let perfilRequerido = {
     email: email,
@@ -36,6 +37,7 @@ localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario))
 cargarImagen();
 }
 
+//Funcion para el boton de editar los input.
 document.getElementById('btnEditar').addEventListener('click', ()=>{
   document.querySelectorAll('input').forEach((input => {
     input.removeAttribute('disabled');
@@ -45,6 +47,7 @@ document.getElementById('btnEditar').addEventListener('click', ()=>{
 })
 
 
+//Funcion para poder cargar y guardar la imagen de perfil.
 const subirImagen = () => {
   let f = document.querySelector("#file");
  if(f.files && f.files[0]) {
@@ -79,6 +82,8 @@ const cargarImagen = () => {
   }
 }
 
+
+//Carga inicial de los datos.
 document.addEventListener('DOMContentLoaded', ()=>{
   if(localStorage.getItem('datosUsuario') !== null){
     let p = JSON.parse(localStorage.getItem('datosUsuario'))[0];
@@ -113,7 +118,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 }
 });
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+//Funcion para validar los input y guardar los datos.
 (() => {
     'use strict'
   
@@ -161,7 +167,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
                   }
           }
           })
-          //document.getElementById('btnEditar').hidden = false;
           event.preventDefault()
           event.stopPropagation()
         }
